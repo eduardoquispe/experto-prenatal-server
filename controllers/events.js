@@ -66,6 +66,9 @@ const updateEvent = async (req = request, res = response) => {
   }
 };
 const showEvent = async (req = request, res = response) => {
+
+  res.status(200).json('hola');
+
   const eventos = await Evento.find().populate("user", "name");
   res.status(200).json({
     ok: true,
