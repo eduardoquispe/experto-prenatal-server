@@ -7,7 +7,7 @@ require("dotenv").config();
 const app = express();
 
 //BD
-dbConnection();
+// dbConnection();
 
 //DIRECCIONAMOS A LA VISTA
 app.use(express.static("public"));
