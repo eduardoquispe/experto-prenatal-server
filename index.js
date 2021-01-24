@@ -16,9 +16,9 @@ app.use(express.static("public"));
 app.use(express.json());
 
 //RUTAS--
-app.use("/new", require("./routes/auth"));
-app.use("/api/events", require("./routes/events"));
-app.use("/requeriments", require("./routes/requeriments"));
+// app.use("/new", require("./routes/auth"));
+// app.use("/api/events", require("./routes/events"));
+app.use("/api/requeriments", require("./routes/requeriments"));
 
 //ESCUCHAR EL PUERTO EN .ENV
 app.listen(process.env.PORT, () => {
