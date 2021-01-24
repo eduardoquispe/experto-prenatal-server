@@ -38,3 +38,6 @@ router.post(
 router.get("/revalidarToken", validarJWT, revalidarToken);
 
 module.exports = router;
+
+// mongodb+srv://UserJunior:PJunior@cluster0.zrmff.mongodb.net/test
+// mongodb+srv://UserJunior:PJunior@cluster0.zrmff.mongodb.net/DB_Experto

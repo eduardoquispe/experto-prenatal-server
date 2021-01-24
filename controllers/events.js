@@ -57,7 +57,7 @@ const updateEvent = async (req = request, res = response) => {
       }
     );
     res.json({ ok: true, evento: eventoActualizado });
-  } catch (error) {
+  }catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
