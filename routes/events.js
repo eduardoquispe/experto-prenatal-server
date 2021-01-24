@@ -8,11 +8,19 @@ const {
   updateEvent,
   deleteEvent,
 } = require("../controllers/events");
+
+const {
+  showRequirements
+} = require("../controllers/requirements");
+
 const { validarCampos } = require("../middleware/validar-campos");
 const router = Router();
 //Todos los que estan debajo estarna pasando por el JWT
 router.use(validarJWT);
 router.get("/", showEvent);
+router.get("/requirements",showRequirements);
+
+
 router.post(
   "/create",
   [
