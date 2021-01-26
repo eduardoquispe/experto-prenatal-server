@@ -10,7 +10,7 @@ const router = Router();
 
 
 //el val jwt si solo es 1
-router.get("/", showRequirements);
+router.post("/", showRequirements);
 
 module.exports = router;
 

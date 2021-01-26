@@ -1,5 +1,6 @@
 const { response, request, json } = require("express");
 const Evento = require("../models/Event");
+
 const createEvent = async (req = request, res = response) => {
   //verificar
   const evento = new Evento(req.body);

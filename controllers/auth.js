@@ -7,21 +7,23 @@ const { generarJwt } = require("../helpers/jwt");
 
 const crearUsuario = async (req, res = response) => {
   const { email, password } = req.body;
-  // return res.json(req.body);
+   //return res.json(req.body);
   try {
     //RESTRINGIMOS EL EMAIL
 
-    let usuario = await Usuario.findOne({ email: email });
+    //let usuario = await Usuario.findOne({ email: email });
     
-    if (usuario) {
-      return res.status(400).json({
-        ok: false,
-        msg: "Un usuario existe con ese correo",
-      });
-    }
+    // if (usuario) {
+    //   return res.status(400).json({
+    //     ok: false,
+    //     msg: "Un usuario existe con ese correo",
+    //   });
+    // }
 
     //REESCRIBIMOS LA VARIABLE
     usuario = new Usuario(req.body);
+    //return res.json(usuario);
+
     //encriptamos el PASSWORD
     const salt = bcrypt.genSaltSync();
     usuario.password = bcrypt.hashSync(password, salt);
