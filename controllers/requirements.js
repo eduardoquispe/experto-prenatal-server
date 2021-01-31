@@ -20,100 +20,100 @@ const showRequirements =(req = request, res = response) => {
 
   var arrayResult = [];
   // res.status(200).json(testScores);
- 
+ let numberAtencion;
   
   for (const prop in objReturn) {
     let row;
-    
+    let valor=objReturn[prop];
     //res.status(200).json(prop);
-
+     //  objReturn[prop]
 
 
 
     
     if(prop=='numeroAtencion'){
-      row=estandar.numeroAtencion(objReturn[prop]);
+      numberAtencion=valor;
+      // res.status(200).json(numberAtencion);
+      row=estandar.numeroAtencion(valor,numberAtencion);
     }
-    if(prop=='pesoPreGestante'){
-      row=estandar.pesoPreGestante(objReturn[prop]);
-    }
+
     if(prop=='edadGestante'){
-      row=estandar.edadGestante(objReturn[prop]);
+      row=estandar.edadGestante(valor,numberAtencion);
     }
     if(prop=='pesoGestante'){
-      row=estandar.pesoGestante(objReturn[prop]);
+      row=estandar.pesoGestante(valor,numberAtencion);
     }
     if(prop=='temperatura'){
-      row=estandar.temperatura(objReturn[prop]);
+      row=estandar.temperatura(valor,numberAtencion);
     }
     if(prop=='precionArterial'){
-      row=estandar.precionArterial(objReturn[prop]);
+      row=estandar.precionArterial(valor,numberAtencion);
     }
     if(prop=='pulsoMaterno'){
-      row=estandar.pulsoMaterno(objReturn[prop]);
+      row=estandar.pulsoMaterno(valor,numberAtencion);
     }
     if(prop=='alturaUterina'){
-      row=estandar.alturaUterina(objReturn[prop]);
+      row=estandar.alturaUterina(valor,numberAtencion);
     }
     if(prop=='situacion'){
-      row=estandar.situacion(objReturn[prop]);
+      row=estandar.situacion(valor,numberAtencion);
     }
     if(prop=='presentacion'){
-      row=estandar.presentacion(objReturn[prop]);
+      row=estandar.presentacion(valor,numberAtencion);
     }
     if(prop=='posicion'){
-      row=estandar.posicion(objReturn[prop]);
+      row=estandar.posicion(valor,numberAtencion);
     }
     if(prop=='frecuenciaCardiaFetal'){
-      row=estandar.frecuenciaCardiaFetal(objReturn[prop]);
+      row=estandar.frecuenciaCardiaFetal(valor,numberAtencion);
     }
     if(prop=='movimientoFetal'){
-      row=estandar.movimientoFetal(objReturn[prop]);
+      row=estandar.movimientoFetal(valor,numberAtencion);
     }
     if(prop=='proteinuriaCualitativa'){
-      row=estandar.proteinuriaCualitativa(objReturn[prop]);
+      row=estandar.proteinuriaCualitativa(valor,numberAtencion);
     }
     if(prop=='edema'){
-      row=estandar.edema(objReturn[prop]);
+      row=estandar.edema(valor,numberAtencion);
     }
     if(prop=='reflejoOseoTendinoso'){
-      row=estandar.reflejoOseoTendinoso(objReturn[prop]);
+      row=estandar.reflejoOseoTendinoso(valor,numberAtencion);
     }
     if(prop=='examenDePezon'){
-      row=estandar.examenDePezon(objReturn[prop]);
+      row=estandar.examenDePezon(valor,numberAtencion);
     }
     if(prop=='indiceHierro'){
-      row=estandar.indiceHierro(objReturn[prop]);
+      row=estandar.indiceHierro(valor,numberAtencion);
     }
     if(prop=='indiceAcidoFolio'){
-      row=estandar.indiceAcidoFolio(objReturn[prop]);
+      row=estandar.indiceAcidoFolio(valor,numberAtencion);
     }
     if(prop=='indiceCalcio'){
-      row=estandar.indiceCalcio(objReturn[prop]);
+      row=estandar.indiceCalcio(valor,numberAtencion);
     }
     if(prop=='OrientacionConsejeria'){
-      row=estandar.OrientacionConsejeria(objReturn[prop]);
+      row=estandar.OrientacionConsejeria(valor,numberAtencion);
     }
     if(prop=='ECOControl'){
-      row=estandar.ECOControl(objReturn[prop]);
+      row=estandar.ECOControl(valor,numberAtencion);
     }
     if(prop=='perfilBiofisico'){
-      row=estandar.perfilBiofisico(objReturn[prop]);
+      row=estandar.perfilBiofisico(valor,numberAtencion);
     }
     if(prop=='cita'){
-      row=estandar.cita(objReturn[prop]);
+      row=estandar.cita(valor,numberAtencion);
     }
     if(prop=='visitaDomicilia'){
-      row=estandar.visitaDomicilia(objReturn[prop]);
+      row=estandar.visitaDomicilia(valor,numberAtencion);
     }
     if(prop=='planParto'){
-      row=estandar.planParto(objReturn[prop]);
+      row=estandar.planParto(valor,numberAtencion);
     }
-    if(prop=='estabaDeLaAtencion'){
-      row=estandar.estabaDeLaAtencion(objReturn[prop]);
+    if(prop=='establecimientoDeLaAtencion'){
+      row=estandar.establecimientoDeLaAtencion(valor,numberAtencion);
     }
     if(prop=='numeroFormatoSis'){
-      row=estandar.numeroFormatoSis(objReturn[prop]);
+      row=estandar.numeroFormatoSis(valor,numberAtencion);
     }
     if(row!=null){
 

@@ -1,42 +1,9 @@
-// let numeroAtencion = function (valor) {
-//     let obj={
-//         "indicador":"numeroAtencion",
-//         "valor":valor,
-//         "msj":"Este es el mensaje",
-//         "respuesta":"Esta es la respuesta",
-//         "estado":'verde'
-//     } 
-//     return obj;
-// }
-// let edadGestante = function (valor) {
- 
-//     let obj={
-//         "indicador":"edadGestante",
-//         "valor":valor,
 
-//         "msj":"..peso_pregestante",
-//         "respuesta":"Esta es la respuesta",
-//         "estado":'verde'
-//     } 
- 
-//     return obj;
-// }
-// let pesoPreGestante = function (valor) {
- 
-//     let obj={
-//         "indicador":"pesoPreGestante",
-//         "valor":valor,
-//         "msj":"..peso_pregestante",
-//         "respuesta":"Esta es la respuesta",
-//         "estado":'verde'
-//     } 
- 
-//     return obj;
-// }
 let msg=null;
 let estado="verde";
-
-let numeroAtencion = function (valor) {
+ 
+let numeroAtencion  = function (valor,atencion) {
+    
     let obj={
         "indicador":"numeroAtencion",
         "valor":valor,
@@ -45,7 +12,22 @@ let numeroAtencion = function (valor) {
     } 
     return obj;
 }
-let edadGestante = function (valor) {
+let edadGestante  = function (valor,atencion) {
+      estado="verde";
+
+    if(valor==4 && 1==atencion){estado='naranja'} 
+    if(valor==8 && 2==atencion){estado='naranja'} 
+    if(valor==12 && 3==atencion){estado='naranja'}
+    if(valor==16 && 4==atencion){estado='naranja'}
+    if(valor==20 && 5==atencion){estado='naranja'}
+    if(valor==24 && 6==atencion){estado='naranja'}
+    if(valor==28 && 7==atencion){estado='naranja'}
+    if(valor==32 && 8==atencion){estado='naranja'}
+    if(valor==36 && 9==atencion){estado='naranja'}
+
+    if(estado){msg='control de crecimiento realizado'}
+    else{msg='falta de revicion del crecimiento de el bebe'}
+
     let obj={
         "indicador":"edadGestante",
         "valor":valor,
@@ -54,16 +36,63 @@ let edadGestante = function (valor) {
     } 
     return obj;
 }
-let pesoPreGestante = function (valor) {
-    let obj={
-        "indicador":"pesoPreGestante",
-        "valor":valor,
-        "msg":msg,
-        "estado":estado
-    } 
-    return obj;
-}
-let pesoGestante = function (valor) {
+let pesoGestante  = function (valor,atencion) {
+
+    let mensaje_min="riesgo de desnutricion para el bebe";
+    let mensaje_max="riesgo de obecidad para el bebe.";
+
+    let estado='naranja';
+    mensaje="riesgo de desnutricion para el bebe"
+    if(1==atencion){
+        if(valor>65 && valor<=67){estado='verde'} 
+        if(valor<65){msg=mensaje_min}
+        if(valor>67){msg=mensaje_max}
+    }
+    if(2==atencion){
+        if(valor>67 && valor<=69){estado='verde'} 
+        if(valor<67){msg=mensaje_min}
+        if(valor>69){msg=mensaje_max}
+    }
+    if(3==atencion){
+        if(valor>69 && valor<=71 ){estado='verde'} 
+        if(valor<67){msg=mensaje_min}
+        if(valor>69){msg=mensaje_max}
+    }
+    if(4==atencion){
+        if(valor>71 && valor<=73 ){estado='verde'} 
+        if(valor<71){msg=mensaje_min}
+        if(valor>73){msg=mensaje_max}
+    }
+    if(5==atencion){
+        if(valor>73 && valor<=75 ){estado='verde'} 
+        if(valor<73){msg=mensaje_min}
+        if(valor>75){msg=mensaje_max}
+    }
+    if(6==atencion){
+        if(valor>75 && valor<=77 ){estado='verde'} 
+        if(valor<75){msg=mensaje_min}
+        if(valor>77){msg=mensaje_max}
+    }
+    if(7==atencion){
+        if(valor>79 && valor<=81 ){estado='verde'} 
+        if(valor<79){msg=mensaje_min}
+        if(valor>81){msg=mensaje_max}
+    }
+    if(8==atencion){
+        if(valor>79 && valor<=81 ){estado='verde'} 
+        if(valor<79){msg=mensaje_min}
+        if(valor>81){msg=mensaje_max}
+    }
+    if(9==atencion){
+        if(valor>81 && valor<=83 ){estado='verde'} 
+        if(valor<81){msg=mensaje_min}
+        if(valor>83){msg=mensaje_max}
+    }
+
+    
+
+
+
     let obj={
         "indicador":"pesoGestante",
         "valor":valor,
@@ -72,14 +101,14 @@ let pesoGestante = function (valor) {
     } 
     return obj;
 }
-let temperatura = function (valor) {
+let temperatura  = function (valor,atencion) {
 
     if(valor<=37 && valor>=36){
         msg="Tempera estable";estado='verde';
     }else if(valor>37){
-        msg="La temepera es muy elevada";estado='rojo';
+        msg="Alto riesgo de que el bebe presente dificultades por pérdida de líquido amniótico.";estado='rojo';
     }else if(valor<36){
-        msg="La temepera es esta inferior al rango";estado='rojo';
+        msg="Alto riesgo de que el bebe sufra por la baja de temperatura del cuerpo.";estado='rojo';
     }
 
     let obj={
@@ -95,11 +124,19 @@ let temperatura = function (valor) {
 // 			 Si es mayor consecuencia,Si es mas de e
 
 
-let precionArterial = function (valor) {
+let precionArterial  = function (valor,atencion) {
 
     var divisiones = valor.split("/");
     let num=divisiones[0];
     let deno=divisiones[1];
+
+    if(valor<=90 && valor>=80){
+        msg="Presión arterial estable.";estado='verde';
+    }else if(valor>90){
+        msg="Alto riesgo de hipertension crónica y falta de oxigeno para el bebe.";estado='rojo';
+    }else if(valor<80){
+        msg="Riesgo a la madre gestante este con la  presion baja afectando al bebe.";estado='rojo';
+    }
 
     let obj={
         //80-90/120 
@@ -111,7 +148,17 @@ let precionArterial = function (valor) {
     return obj;
 }
 //60-80
-let pulsoMaterno = function (valor) {
+let pulsoMaterno  = function (valor,atencion) {
+
+    if(valor<=80  && valor>=60 ){
+        msg="Ritmo cardiaco estable..";estado='verde';
+    }else if(valor>80){
+        msg="Alto riesgo de probocar la muerte al bebe y a la madre.";estado='rojo';
+    }else if(valor<60){
+        msg="Riesgo de probocar la muerte al bebe.";estado='rojo';
+    }
+
+
     let obj={
         "indicador":"pulsoMaterno",
         "valor":valor,
@@ -125,7 +172,61 @@ let pulsoMaterno = function (valor) {
 // Max-excede:Tenga en vientre, vejia llena o tejido adiposo    ,
 // Min:Anemia bebe debil.
 // *Si esta muy obeso programar sesaria.
-let alturaUterina = function (valor) {
+let alturaUterina  = function (valor,atencion) {
+
+
+    let mensaje_min="posible señal de futura sesaria.";
+    let mensaje_max="posible aumento de peso por parte de la madre.";
+     let estado='rojo';
+     if(1==atencion){
+        if(valor==4){estado='verde'} 
+        if(valor<4){msg=mensaje_min}
+        if(valor>4){msg=mensaje_max}
+    }
+    if(2==atencion){
+        if(valor==8){estado='verde'} 
+        if(valor<8){msg=mensaje_min}
+        if(valor>8){msg=mensaje_max}
+    }
+    if(3==atencion){
+        if(valor==12){estado='verde'} 
+        if(valor<12){msg=mensaje_min}
+        if(valor>12){msg=mensaje_max}
+    }
+    if(4==atencion){
+        if(valor==16){estado='verde'} 
+        if(valor<16){msg=mensaje_min}
+        if(valor>16){msg=mensaje_max}
+    }
+    if(5==atencion){
+        if(valor==20 ){estado='verde'} 
+        if(valor<20){msg=mensaje_min}
+        if(valor>20){msg=mensaje_max}
+    }
+    if(6==atencion){
+        if(valor==24){estado='verde'} 
+        if(valor<24){msg=mensaje_min}
+        if(valor>24){msg=mensaje_max}
+    }
+    if(7==atencion){
+        if(valor==28){estado='verde'} 
+        if(valor<28){msg=mensaje_min}
+        if(valor>28){msg=mensaje_max}
+    }
+    if(8==atencion){
+        if(valor==32){estado='verde'} 
+        if(valor<32){msg=mensaje_min}
+        if(valor>32){msg=mensaje_max}
+    }
+    if(9==atencion){
+        if(valor==36){estado='verde'} 
+        if(valor<36){msg=mensaje_min}
+        if(valor>36){msg=mensaje_max}
+    }
+
+
+
+
     let obj={
         "indicador":"alturaUterina",
         "valor":valor,
@@ -140,7 +241,59 @@ let alturaUterina = function (valor) {
 // Solo apartir de 14 Semanas ,donde esta la cabez el potito.
 // 1 y 2 TRIMESTRE L
 // L:debe ir al momento del parto.
-let situacion = function (valor) {
+let situacion  = function (valor,atencion) {
+
+    estado='rojo'
+    msg="Tomar medidas preventivas para el parto";
+
+    if(atencion==1 || atencion==2){
+        if(valor=='no aplica'){
+            msg="el bebe saludable";
+            estado='verde';
+        }
+    }
+    if(atencion>=3 && atencion<=6){
+        if(valor=='longitudinal'){
+            msg="el bebe saludable";
+            estado='verde';
+        }
+    }
+    if(atencion>=7 && atencion<=9){
+        if(valor=='transverso'){
+            msg="el bebe saludable";
+            estado='verde';
+        }
+    }
+
+    let obj={
+        "indicador":"situacion",
+        "valor":valor,
+        "msg":msg,
+        "estado":estado
+    } 
+    return obj;
+
+}
+
+// PRESENTACION(Cefalico cabeza / Podalico nalga)
+// Cefalico[cabeza]|Podalico[nalga])
+// 1 y 2 PODALICO  [REVISAR]
+// C/P/NA
+
+let presentacion  = function (valor,atencion) {
+
+    
+    if(valor=='cefalico' || valor=='podalico'){
+        
+        msg=`Presentacion ${valor} prevista confirmada.`;
+        estado='verde'
+    }else{
+        estado='naranja'
+    }
+
+
+
+
     let obj={
         "indicador":"situacion",
         "valor":valor,
@@ -150,21 +303,14 @@ let situacion = function (valor) {
     return obj;
 }
 
-
-// PRESENTACION(Cefalico cabeza / Podalico nalga)
-// 1 y 2 PODALICO  [REVISAR]
-let presentacion = function (valor) {
-    let obj={
-        "indicador":"presentacion",
-        "valor":valor,
-        "msg":msg,
-        "estado":estado
-    } 
-    return obj;
-}
-
 // POSICION[Izquierdo/Derecho]:No indica animalidad.
-let posicion = function (valor) {
+let posicion  = function (valor,atencion) {
+
+
+
+    msg=`la posicion del bebe es del lado ${valor}`
+    estado='verde';
+
     let obj={
         "indicador":"posicion",
         "valor":valor,
@@ -178,7 +324,23 @@ let posicion = function (valor) {
 // FRECUENCIA .CARDIACA .FETAL( por min /NA): 140-148
 // Mayor:[revisar] Estado animo de la gestante.
 // Menor:Porpenso a anemia o anomalia a su corazón.
-let frecuenciaCardiaFetal = function (valor) {
+let frecuenciaCardiaFetal  = function (valor,atencion) {
+
+    
+    if(valor>=140  && valor<=160){
+        msg="Frecuencia cardiaca normal";
+        estado='verde';
+    }
+    if(valor<140){
+        msg="Posible perdida de liquido amniotico";
+        estado='rojo';
+    }
+    if(valor>160){
+        msg="El bebe presenta problemas cardiacos";
+        estado='rojo';
+    }
+
+
     let obj={
         "indicador":"frecuenciaCardiaFetal",
         "valor":valor,
@@ -194,7 +356,17 @@ let frecuenciaCardiaFetal = function (valor) {
 // Estandar: Del primer trimestre se muestran Ondas.
 // Excede: Si se mueve mucho no hay anomalia.
 // Menor: Si el bebe no se mueve alerta.
-let movimientoFetal = function (valor) {
+let movimientoFetal  = function (valor,atencion) {
+
+
+    if(valor=='+'||valor=='++'||valor=='+++'){
+        msg="Muestra movimientos todo normal";estado='verde';
+        estado='rojo';
+    }else if(valor=='na'||valor=='sinmovimiento'){
+        msg="El bebe no se mueve, alerta";estado='rojo';
+        estado='rojo';
+    }
+
     let obj={
         "indicador":"movimientoFetal",
         "valor":valor,
@@ -207,7 +379,17 @@ let movimientoFetal = function (valor) {
 // Proteinuria Cualitativa(+/++/+++/NSH).
 // [Examenes sofistificados-NIVEL COMPLICADO].
 // -Si hay complicaciones generalmente peligra.
-let proteinuriaCualitativa = function (valor) {
+let proteinuriaCualitativa  = function (valor,atencion) {
+
+
+    if('nsh'==valor){
+        msg="No presenta precion arterial alta.";estado='verde';
+    }else{
+        msg="Alto riesgo de precion arterial inestable.";estado='verde';
+    }
+
+
+
     let obj={
         "indicador":"proteinuriaCualitativa",
         "valor":valor,
@@ -223,7 +405,19 @@ let proteinuriaCualitativa = function (valor) {
 // Estandar:+.
 // Sin edema no toma liquido.
 // [REVISAR]
-let edema = function (valor) {
+
+
+let edema  = function (valor,atencion) {
+
+    if(valor=='+'||valor=='++'||valor=='+++'){
+        msg="Presenta hinchazón normal de la etapa del embarazo.";estado='verde';
+
+    }else if(valor=='se'){
+        msg="Alto riesgo por dolor a la boca del estomago.";estado='rojo';
+
+    }
+
+
     let obj={
         "indicador":"edema",
         "valor":valor,
@@ -236,7 +430,15 @@ let edema = function (valor) {
 // REFLEJO OSEOTENDINOSO:
 // Estandar de no presentar.
 // Dolor en la boca del estomago.
-let reflejoOseotendinoso = function (valor) {
+let reflejoOseotendinoso  = function (valor,atencion) {
+
+    if(valor==0){
+        msg="No presenta dolor a nivel de la boca del estómago";estado='verde';
+    }else{
+        msg="Alto riesgo de dolor en la boca del estómago y complicaciones en el embarazo";estado='rojo';
+
+    }
+
     let obj={
         "indicador":"reflejoOseotendinoso",
         "valor":valor,
@@ -250,7 +452,24 @@ let reflejoOseotendinoso = function (valor) {
 // EXAMEN DE PEZON (F/NF) [FORMADO /NO FORMADO]
 // Estandar:Formado apartir del primer consulta.
 // Garantizando el paego seguro, la primera lactancia.
-let examenDePezon = function (valor) {
+let examenDePezon  = function (valor,atencion) {
+
+    if('formado'==valor){
+        msg="Se muestra la formación del pezón, lo cual garantiza la lactancia del bebé";
+        estado='verde';
+    }  
+    if('no formado'==valor){
+        msg="Él bebe no podrá lactar cuando nazca. Posible riesgo de infección de las mamas.";
+        estado='naranja';
+    }
+    if('sin examen'==valor){
+        msg="Podría presentar dolor al darle de lactar al bebe. Y él bebe podría sufrir de anemia.";
+        estado='rojo';
+    }
+
+
+
+
     let obj={
         "indicador":"examenDePezon",
         "valor":valor,
@@ -266,9 +485,19 @@ let examenDePezon = function (valor) {
 //     FIERRO: APARTIR DE L4 MES YA QUE PUEDE TENER NAUSEAS.
 //     FIERRO:para la gestante al lactar sobre todo va a votar sangre.
 
-let indiceHierro = function (valor) {
+let indiceFierro  = function (valor,atencion) {
+
+    // str.toLowerCase();
+    if(valor='si consume'){
+        msg='Ayudar a evitar la anemia en él bebe, y elevar la hemoglobina de la gestante';
+        estado="verde"
+    }
+    if(valor='no consume'){
+        msg='Él bebe presentara falta de hierro y la gestante podría presentar problemas de lactancia materna';
+        estado="rojo"
+    }
     let obj={
-        "indicador":"indiceHierro",
+        "indicador":"indiceFierro",
         "valor":valor,
         "msg":msg,
         "estado":estado
@@ -278,18 +507,43 @@ let indiceHierro = function (valor) {
 
  //     ESTANDAR:DEL PRIMER TRIMESETRE TABLETA DE ACIDO FOLICO.
 
-let indiceAcidoFolio = function (valor) {
+let indiceAcidoFolio  = function (valor,atencion) {
+
+    // str.toLowerCase();
+    if(valor='si consume'){
+        msg='Contribuye al desarrollo de los huesos del bebe y regulará la nutrición del bebé.';
+        estado="verde"
+    }
+    if(valor='no consume'){
+        msg='Él bebe presentara falta de hierro y la gestante podría presentar problemas de lactancia materna';
+        estado="rojo"
+    }
     let obj={
-        "indicador":"indiceAcidoFolio",
+        "indicador":"indiceFierro",
         "valor":valor,
         "msg":msg,
         "estado":estado
     } 
     return obj;
+
+ 
 }
 // INDICIONAL CALCIO:
 // 20 SEMANAS CALCIO APARTIR DE 20 SEMANAS POR QUE NECESITA ADICIONAL.
-let indiceCalcio = function (valor) {
+let indiceCalcio  = function (valor,atencion) {
+
+
+    // str.toLowerCase();
+    if(valor='si consume'){
+        msg='La gestante tendrá la regulación de calcio correcto en el organismo para que él bebe pueda absorber';
+        estado="verde"
+    }
+    if(valor='no consume'){
+        msg='La gestante tendrá problemas de descalcificación, al igual que el bebé.';
+        estado="rojo"
+    }
+
+
     let obj={
         "indicador":"indiceCalcio",
         "valor":valor,
@@ -303,7 +557,16 @@ let indiceCalcio = function (valor) {
 // ORIENTACION CONSEJERIA: 
 // [REVISAR]
 
-let OrientacionConsejeria = function (valor) {
+let OrientacionConsejeria  = function (valor,atencion) {
+    
+    if(valor='si'){
+        msg='Se orienta sobre el cuidado integral de la gestante y la planificación familiar.';
+        estado="verde"
+    }
+    if(valor='no'){
+        msg='La falta de orientación podría traer problemas en la alimentación y nutrición saludable de la gestante y en el cuidado del bebé.';
+        estado="naranja"
+    }
     let obj={
         "indicador":"OrientacionConsejeria",
         "valor":valor,
@@ -312,7 +575,19 @@ let OrientacionConsejeria = function (valor) {
     } 
     return obj;
 }
-let ECOControl = function (valor) {
+
+ 
+let ECOControl  = function (valor,atencion) {
+
+
+    if(valor='se hizo'){
+        msg='Se puede observar alguna complicación en la gestante y en la formación del feto.';
+        estado="verde"
+    }
+    if(valor='no se hizo'){
+        msg='No se puede verificar el estado de salud del bebé';
+        estado="rojo"
+    }
     let obj={
         "indicador":"ECOControl",
         "valor":valor,
@@ -321,7 +596,26 @@ let ECOControl = function (valor) {
     } 
     return obj;
 }
-let perfilBiofisico = function (valor) {
+
+
+// Se hizo/ No se hizo/ N.A.) 
+
+// if(valor='Si'){
+//     msg='';
+//     estado="rojo"
+// }
+let perfilBiofisico  = function (valor,atencion) {
+
+    if(valor='na'){
+        msg='Se realiza cuando la gestante esta hospitalizada, y se va a realizar su cesárea.';
+        estado="verde"
+    }else{
+        msg='...';
+        estado="rojo"
+    }
+
+
+
     let obj={
         "indicador":"perfilBiofisico",
         "valor":valor,
@@ -330,7 +624,16 @@ let perfilBiofisico = function (valor) {
     } 
     return obj;
 }
-let cita = function (valor) {
+let cita  = function (valor,atencion) {
+
+    if(valor==''){
+        msg='No se ha registrado la fecha la fecha de su siguiente control.';
+        estado="naranja"
+    }else{
+        msg=`Se ha registrado la fecha de su siguiente control para ${valor}`;
+        estado="verde"
+    }
+
     let obj={
         "indicador":"cita",
         "valor":valor,
@@ -339,7 +642,20 @@ let cita = function (valor) {
     } 
     return obj;
 }
-let visitaDomicilia = function (valor) {
+let visitaDomicilia  = function (valor,atencion) {
+
+
+    if(valor='si'){
+        msg='La gestante no acudió al control mensual, por lo que se realizará la visita domiciliaria.';
+        estado="verde"
+    }
+
+    if(valor='no'){
+        msg='La visita domicilia se debió realizar al día siguiente de no haber acudido la gestante a su control mensual.';
+        estado="naranja"
+    }
+
+
     let obj={
         "indicador":"visitaDomicilia",
         "valor":valor,
@@ -348,7 +664,21 @@ let visitaDomicilia = function (valor) {
     } 
     return obj;
 }
-let planParto = function (valor) {
+let planParto  = function (valor,atencion) {
+
+    if(valor='control'){
+        msg='Se ha registrado el domicilio de la gestante y la persona que la apoyará durante el embarazo.';
+        estado="verde"
+    }
+
+    if(valor='visita'){
+        msg='Se ha registrado el número telefónico y los puntos referenciales del domicilio de la gestante en caso de posibles complicaciones';
+        estado="naranja"
+    }
+    if(valor='no se hizo'){
+        msg='No se conoce el domicilio de la gestante, ni el familiar que la apoyará durante el embarazo.';
+        estado="rojo"
+        }
     let obj={
         "indicador":"planParto",
         "valor":valor,
@@ -357,16 +687,20 @@ let planParto = function (valor) {
     } 
     return obj;
 }
-let estabaDeLaAtencion = function (valor) {
+let establecimientoDeLaAtencion  = function (valor,atencion) {
+    msg=`Establecimiento de atención o puesto de salud: ${valor}`;
     let obj={
-        "indicador":"estabaDeLaAtencion",
+        "indicador":"establecimientoDeLaAtencion",
         "valor":valor,
         "msg":msg,
         "estado":estado
     } 
     return obj;
 }
-let numeroFormatoSis = function (valor) {
+let numeroFormatoSis  = function (valor,atencion) {
+
+    msg=`Nro del Seguro de SIS: ${valor}`;
+
     let obj={
         "indicador":"numeroFormatoSis",
         "valor":valor,
@@ -381,7 +715,6 @@ let numeroFormatoSis = function (valor) {
 module.exports = {
     numeroAtencion,
     edadGestante,
-    pesoPreGestante,
     pesoGestante,
     temperatura,
     precionArterial,
@@ -396,7 +729,7 @@ module.exports = {
     edema,
     reflejoOseotendinoso,
     examenDePezon,
-    indiceHierro,
+    indiceFierro,
     indiceAcidoFolio,
     indiceCalcio,
     OrientacionConsejeria,
@@ -405,7 +738,7 @@ module.exports = {
     cita,
     visitaDomicilia,
     planParto,
-    estabaDeLaAtencion,
+    establecimientoDeLaAtencion,
     numeroFormatoSis
 }
 
