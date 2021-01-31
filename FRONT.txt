@@ -1,0 +1,62 @@
+// EJEMPLO https://backend-experto-obstetra.herokuapp.com/api/requeriments
+{
+  "numeroAtencion": 1,
+  "edadGestante": 15,
+  "pesoGestante": 65,
+  "temperatura": 35,
+  "precionArterial": "80/120",
+  "pulsoMaterno": 60,
+  "alturaUterina":4,
+  "situacion": "longitudinal",
+  "presentacion": "cefalico",
+  "posicion": "Izquierdo",
+  "frecuenciaCardiaFetal": 150,
+  "movimientoFetal": "+",
+  "proteinuriaCualitativa": "nsh",
+  "edema": "se",
+  "reflejoOseotendinoso":0,
+  "examenDePezon":"formado",
+  "indiceFierro":"si consume",
+  "indiceAcidoFolio": "si consume",
+  "indiceCalcio": "si consume",
+  "OrientacionConsejeria": "si",
+  "ECOControl": "se hizo",
+  "perfilBiofisico": "na",
+  "cita": "2021-05-05",
+  "visitaDomicilia": "si",
+  "planParto": "control",
+  "establecimientoDeLaAtencion": "San asutin",
+  "numeroFormatoSis": "El sis"
+}
+
+//PARAMTROS POST https://backend-experto-obstetra.herokuapp.com/api/requeriments
+{
+  "numeroAtencion": 1,
+  "edadGestante": (* Numero de semanas,[1-36]),
+  "pesoGestante"(Su peso es de 65 por defecto)
+  "temperatura": 35(*numero),
+  "precionArterial":(*numero)[80-90]/120 (poner 120 como denominador por defecto)",
+  "pulsoMaterno":(*numero)[60 - 80 ],
+  "alturaUterina":(*numero)[4 - 36 ],
+  "situacion": ( Longitudinal | Transverso | No Aplica)
+  "presentacion": (Cefalico/|Podalico/NA)
+  "posicion": (Izquierdo|Derecho)
+  "frecuenciaCardiaFetal": (*numero)[140 - 160],
+  "movimientoFetal": (+/++/+++/SinMovimiento/NA)
+  "proteinuriaCualitativa": (+/++/+++/NSH(especificar nombre))
+  "edema": (+/++/+++/SinEdema)
+  "reflejoOseotendinoso":(0, +/++/+++)
+  "examenDePezon":(Formado/ No formado/ Sin examen)
+  "indiceFierro":(SI CONSUME / NO CONSUME)
+  "indiceAcidoFolio": (SI CONSUME / NO CONSUME)
+  "indiceCalcio":  (SI CONSUME / NO CONSUME)
+  "OrientacionConsejeria": Orientación Consejería: (Si/No)
+  "ECOControl": (Se hizo/ No se hizo/ NA) 
+  "perfilBiofisico": (SE HIZO/NO SE HIZO/NA)
+  "cita": [*fecha]
+  "visitaDomicilia": (SI/ NO/ na)
+  "planParto": (control/visita/no se hizo/NA)
+  "establecimientoDeLaAtencion": : (*nombre establecimiento)
+  "numeroFormatoSis": : (*Numero de sis – 6 dígitos)
+}
+
