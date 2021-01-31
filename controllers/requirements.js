@@ -24,8 +24,16 @@ const showRequirements =(req = request, res = response) => {
   
   for (const prop in objReturn) {
     let row;
-    let valor=objReturn[prop].toLowerCase();
-    valor=valor.trim();
+    let valor=objReturn[prop];
+  
+    
+    valor=Number(valor)
+    if(valor==null){
+      valor=valor.toLowerCase().trim();
+    }
+    //res.status(200).json(valor);
+    
+    // valor=valor.trim();
     //res.status(200).json(prop);
      //  objReturn[prop].toLowerCase()
 
@@ -122,36 +130,7 @@ const showRequirements =(req = request, res = response) => {
     }
   }
   res.status(200).json(arrayResult);
-
-  // "numeroAtencion": 1,
-  // "edadGestante": 15,
-  // "pesoPreGestante": 50,
-  // "pesoGestante": 55,
-  // "temperatura": 35,
-  // "precionArterial": 80,
-  // "pulsoMaterno": 60,
-  // "alturaUterina": "",
-  // "situacion": "Lontiinal//NA",
-  // "presentacion": "",
-  // "posicion": "",
-  // "frecuenciaCardiaFetal": "",
-  // "movimientoFetal": "Lontiinal//NA",
-  // "proteinuriaCualitativa": "",
-  // "edema": "",
-  // "reflejoOseotendinoso": "",
-  // "examenDePezon": "",
-  // "indiceHierro": "",
-  // "indiceAcidoFolio": "",
-  // "indiceCalcio": "",
-  // "OrientacionConsejeria": "",
-  // "ECOControl": "",
-  // "perfilBiofisico": "",
-  // "cita": "",
-  // "visitaDomicilia": "",
-  // "planParto": "",
-  // "estabaDeLaAtencion": "",
-  // "numeroFormatoSis": ""
-
+ 
 };
 
 

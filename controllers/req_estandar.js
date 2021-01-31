@@ -126,9 +126,9 @@ let temperatura  = function (valor,atencion) {
 
 let precionArterial  = function (valor,atencion) {
 
-    var divisiones = valor.split("/");
-    let num=divisiones[0];
-    let deno=divisiones[1];
+    // var divisiones = valor.split("/");
+    // let num=divisiones[0];
+    // let deno=divisiones[1];
 
     if(valor<=90 && valor>=80){
         msg="Presión arterial estable.";estado='verde';
@@ -142,7 +142,7 @@ let precionArterial  = function (valor,atencion) {
         //80-90/120 
         "indicador":"precionArterial",
         "valor":valor,
-        "msg":`msg ${num} sdsa${deno}`,
+        "msg":`msg ${valor} / 120 `,
         "estado":estado
     } 
     return obj;
