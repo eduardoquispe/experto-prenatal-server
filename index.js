@@ -14,6 +14,7 @@ app.use(express.static("public"));
 
 //LECTURA Y PASEO
 app.use(express.json());
+app.use(cors());
 
 //RUTAS--
 app.use("/new", require("./routes/auth"));
