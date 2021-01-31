@@ -25,6 +25,7 @@ const showRequirements =(req = request, res = response) => {
   for (const prop in objReturn) {
     let row;
     let valor=objReturn[prop].toLowerCase();
+    valor=valor.trim();
     //res.status(200).json(prop);
      //  objReturn[prop].toLowerCase()
 
