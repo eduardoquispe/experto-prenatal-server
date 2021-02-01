@@ -1,4 +1,5 @@
 const express = require("express");
+const cors =require('cors');
 const { dbConnection } = require("./database/config");
 //PARA REQUERIR A LAS VARIABLES DE ENTORNO | console.log(process.env)
 require("dotenv").config();
@@ -25,3 +26,6 @@ app.use("/api/requeriments", require("./routes/requeriments"));
 app.listen(process.env.PORT, () => {
   console.log(`Servidor encendido!!!!  ${process.env.PORT}`);
 });
+
+
+
