@@ -295,7 +295,7 @@ let presentacion  = function (valor,atencion) {
 
 
     let obj={
-        "indicador":"situacion",
+        "indicador":"presentacion",
         "valor":valor,
         "msg":msg,
         "estado":estado

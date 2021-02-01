@@ -19,9 +19,28 @@ const showRequirements =(req = request, res = response) => {
 
 
   var arrayResult = [];
-  // res.status(200).json(testScores);
- let numberAtencion;
+
+  // let valor="15";
+  // isNaN(valor)
+  // res.status(200).json(isNaN(valor));
+
+  // if(isNaN(valor)){     
+  //   res.status(200).json(valor);
+  // }else{
+  //   // "metr"
+  //   valor = parseInt(valor);
+  //   res.status(200).json(valor);
+  // }
+
   
+let numberAtencion=objReturn['numeroAtencion'];
+
+if(!isNaN(numberAtencion)){     
+  numberAtencion = parseInt(numberAtencion);
+}
+
+
+
   for (const prop in objReturn) {
     let row;
     let valor=objReturn[prop];
@@ -32,36 +51,52 @@ const showRequirements =(req = request, res = response) => {
     if(isNaN(valor)){
       valor=valor.toLowerCase().trim();
     }
-    //res.status(200).json(valor);
-    
-    // valor=valor.trim();
-    //res.status(200).json(prop);
-     //  objReturn[prop].toLowerCase()
-
 
     
     if(prop=='numeroAtencion'){
-      numberAtencion=valor;
+
+      
+      
       // res.status(200).json(numberAtencion);
       row=estandar.numeroAtencion(valor,numberAtencion);
     }
 
     if(prop=='edadGestante'){
+
+      if(!isNaN(valor)){     
+        valor = parseInt(valor);
+      }
+      
       row=estandar.edadGestante(valor,numberAtencion);
     }
     if(prop=='pesoGestante'){
+      if(!isNaN(valor)){     
+        valor = parseFloat(valor);
+      }
       row=estandar.pesoGestante(valor,numberAtencion);
     }
     if(prop=='temperatura'){
+      if(!isNaN(valor)){     
+        valor = parseFloat(valor);
+      }
       row=estandar.temperatura(valor,numberAtencion);
     }
     if(prop=='precionArterial'){
+      if(!isNaN(valor)){     
+        valor = parseFloat(valor);
+      }
       row=estandar.precionArterial(valor,numberAtencion);
     }
     if(prop=='pulsoMaterno'){
+      if(!isNaN(valor)){     
+        valor = parseFloat(valor);
+      }
       row=estandar.pulsoMaterno(valor,numberAtencion);
     }
     if(prop=='alturaUterina'){
+      if(!isNaN(valor)){     
+        valor = parseFloat(valor);
+      }
       row=estandar.alturaUterina(valor,numberAtencion);
     }
     if(prop=='situacion'){
@@ -140,7 +175,6 @@ const showRequirements =(req = request, res = response) => {
 
   }catch(error){
     res.status(200).json(error);
-
   }
  
 };
