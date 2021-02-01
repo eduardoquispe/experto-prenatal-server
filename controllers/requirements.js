@@ -27,8 +27,9 @@ const showRequirements =(req = request, res = response) => {
     let valor=objReturn[prop];
   
     
-    valor=Number(valor)
-    if(valor==null){
+    // valor=Number(valor)
+    // isNaN(valor)
+    if(isNaN(valor)){
       valor=valor.toLowerCase().trim();
     }
     //res.status(200).json(valor);
@@ -36,7 +37,6 @@ const showRequirements =(req = request, res = response) => {
     // valor=valor.trim();
     //res.status(200).json(prop);
      //  objReturn[prop].toLowerCase()
-
 
 
     
@@ -91,8 +91,8 @@ const showRequirements =(req = request, res = response) => {
     if(prop=='examenDePezon'){
       row=estandar.examenDePezon(valor,numberAtencion);
     }
-    if(prop=='indiceHierro'){
-      row=estandar.indiceHierro(valor,numberAtencion);
+    if(prop=='indiceFierro'){
+      row=estandar.indiceFierro(valor,numberAtencion);
     }
     if(prop=='indiceAcidoFolio'){
       row=estandar.indiceAcidoFolio(valor,numberAtencion);
@@ -128,8 +128,20 @@ const showRequirements =(req = request, res = response) => {
 
       arrayResult.push(row);
     }
+
+
+
+
   }
-  res.status(200).json(arrayResult);
+
+  try{
+ 
+    res.status(200).json(arrayResult);
+
+  }catch(error){
+    res.status(200).json(error);
+
+  }
  
 };
 
