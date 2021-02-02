@@ -47,7 +47,7 @@ let pesoGestante  = function (valor,atencion) {
     estado='naranja';
     msg="Bebe saludable"
     if(1==atencion){
-        if(valor>65 && valor<=67){estado='verde'} 
+        if(valor>=65 && valor<=67){estado='verde'} 
         if(valor<65){msg=mensaje_min}
         if(valor>67){msg=mensaje_max}
     }
@@ -636,8 +636,7 @@ let perfilBiofisico  = function (valor,atencion) {
         msg='...';
         estado="rojo"
     }
-
-
+ 
 
     let obj={
         "indicador":"perfilBiofisico", 
