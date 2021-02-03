@@ -506,11 +506,11 @@ let examenDePezon  = function (valor,atencion) {
 let indiceFierro  = function (valor,atencion) {
 
     // str.toLowerCase();
-    if(valor=='si consume'){
+    if(valor=='si'){
         msg='Ayudar a evitar la anemia en él bebe, y elevar la hemoglobina de la gestante.';
         estado="verde"
     }
-    if(valor=='no consume'){
+    if(valor=='no'){
         msg='Él bebe presentara falta de hierro y la gestante podría presentar problemas de lactancia materna.';
         estado="rojo"
     }
@@ -529,11 +529,11 @@ let indiceFierro  = function (valor,atencion) {
 let indiceAcidoFolio  = function (valor,atencion) {
 
     // str.toLowerCase();
-    if(valor=='si consume'){
+    if(valor=='si'){
         msg='Contribuye al desarrollo de los huesos del bebe y regulará la nutrición del bebé.';
         estado="verde"
     }
-    if(valor=='no consume'){
+    if(valor=='no'){
         msg='La gestante podría presentar náuseas y problemas de lactancia materna”';
         estado="rojo"
     }
@@ -554,11 +554,11 @@ let indiceCalcio  = function (valor,atencion) {
 
 
     // str.toLowerCase();
-    if(valor=='si consume'){
+    if(valor=='si'){
         msg='La gestante tendrá la regulación de calcio correcto en el organismo para que él bebe pueda absorber';
         estado="verde"
     }
-    if(valor=='no consume'){
+    if(valor=='no'){
         msg='La gestante tendrá problemas de descalcificación, al igual que el bebé.';
         estado="rojo"
     }
@@ -692,7 +692,10 @@ let visitaDomicilia  = function (valor,atencion) {
         msg='La visita domicilia se debió realizar al día siguiente de no haber acudido la gestante a su control mensual.';
         estado="naranja"
     }
-     
+    if(valor=='na'){
+        msg='La gestante no necesita atención domiciliaria.';
+        estado="naranja"
+    }
 
     let obj={
         "indicador":"visitaDomicilia", 
