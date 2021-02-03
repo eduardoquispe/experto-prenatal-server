@@ -449,7 +449,7 @@ let edema  = function (valor,atencion) {
 // Dolor en la boca del estomago.
 let reflejoOseotendinoso  = function (valor,atencion) {
 
-    if(valor==0){
+    if(valor==0 || valor=='0'){
         msg="No presenta dolor a nivel de la boca del estómago";estado='verde';
     }else{
         msg="Alto riesgo de dolor en la boca del estómago y complicaciones en el embarazo";estado='rojo';
@@ -516,7 +516,7 @@ let indiceFierro  = function (valor,atencion) {
     }
     let obj={
         "indicador":"indiceFierro", 
-        "label":"Indice fierro",
+        "label":"Índice  fierro",
         "valor":valor,
         "msg":msg,
         "estado":estado
@@ -539,7 +539,7 @@ let indiceAcidoFolio  = function (valor,atencion) {
     }
     let obj={
         "indicador":"indiceFierro", 
-        "label":"Indice acido folio",
+        "label":"Índice ácido folico",
         "valor":valor,
         "msg":msg,
         "estado":estado
@@ -566,7 +566,7 @@ let indiceCalcio  = function (valor,atencion) {
 
     let obj={
         "indicador":"indiceCalcio", 
-        "label":"Indice calcio",
+        "label":"Índice calcio",
         "valor":valor,
         "msg":msg,
         "estado":estado
@@ -699,7 +699,7 @@ let visitaDomicilia  = function (valor,atencion) {
 
     let obj={
         "indicador":"visitaDomicilia", 
-        "label":"Visita domicilia",
+        "label":"Visita domiciliaria",
         "valor":valor,
         "msg":msg,
         "estado":estado
