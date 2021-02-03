@@ -121,7 +121,7 @@ if(!isNaN(numberAtencion)){
       row=estandar.edema(valor,numberAtencion);
     }
     if(prop=='reflejoOseotendinoso'){
-      row=estandar.reflejoOseoTendinoso(valor,numberAtencion);
+      row=estandar.reflejoOseotendinoso(valor,numberAtencion);
     }
     if(prop=='examenDePezon'){
       row=estandar.examenDePezon(valor,numberAtencion);
