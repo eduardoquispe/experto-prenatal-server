@@ -721,6 +721,10 @@ let planParto  = function (valor,atencion) {
         msg='No se conoce el domicilio de la gestante, ni el familiar que la apoyará durante el embarazo.';
         estado="rojo"
         }
+    if(valor=='na'){
+            msg='No se conoce el domicilio de la gestante, ni el familiar que la apoyará durante el embarazo.';
+            estado="rojo"
+    }
     let obj={
         "indicador":"planParto", 
         "label":"Plan parto",
