@@ -507,11 +507,11 @@ let indiceFierro  = function (valor,atencion) {
 
     // str.toLowerCase();
     if(valor=='si consume'){
-        msg='Ayudar a evitar la anemia en él bebe, y elevar la hemoglobina de la gestante';
+        msg='Ayudar a evitar la anemia en él bebe, y elevar la hemoglobina de la gestante.';
         estado="verde"
     }
     if(valor=='no consume'){
-        msg='Él bebe presentara falta de hierro y la gestante podría presentar problemas de lactancia materna';
+        msg='Él bebe presentara falta de hierro y la gestante podría presentar problemas de lactancia materna.';
         estado="rojo"
     }
     let obj={
@@ -534,7 +534,7 @@ let indiceAcidoFolio  = function (valor,atencion) {
         estado="verde"
     }
     if(valor=='no consume'){
-        msg='Él bebe presentara falta de hierro y la gestante podría presentar problemas de lactancia materna';
+        msg='La gestante podría presentar náuseas y problemas de lactancia materna”';
         estado="rojo"
     }
     let obj={
