@@ -724,6 +724,9 @@ let planParto  = function (valor,atencion) {
     if(valor=='na'){
             msg='No se conoce el domicilio de la gestante, ni el familiar que la apoyará durante el embarazo.';
             estado="rojo"
+    }else{
+        msg='Parametro desconocido';
+        estado="naranja"
     }
     let obj={
         "indicador":"planParto", 
@@ -749,7 +752,7 @@ let establecimientoDeLaAtencion  = function (valor,atencion) {
 let numeroFormatoSis  = function (valor,atencion) {
 
     msg=`Nro del Seguro de SIS : ${valor}`;
-
+    estado="verde";
     let obj={
         "indicador":"numeroFormatoSis", 
         "label":"Número SIS",
