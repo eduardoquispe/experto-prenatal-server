@@ -28,7 +28,7 @@ let edadGestante  = function (valor,atencion) {
     if(valor==36 && 9==atencion){estado='verde'}
 
     if(estado=='verde'){msg=`Control de crecimiento realizado, ${valor} semanas `}
-    else{msg='Falta de revicion del crecimiento de el bebe'}
+    else{msg='Falta de revición del crecimiento de el bebe'}
 
     let obj={
         "indicador":"edadGestante", 
@@ -110,9 +110,9 @@ let temperatura  = function (valor,atencion) {
     if(valor<=37 && valor>=36){
         msg="Tempera estable";estado='verde';
     }else if(valor>37){
-        msg="Alto riesgo de que el bebe presente dificultades por pérdida de líquido amniótico.";estado='rojo';
+        msg="Posible daño por baja de temperatura del cuerpo.";estado='rojo';
     }else if(valor<36){
-        msg="Alto riesgo de que el bebe sufra por la baja de temperatura del cuerpo.";estado='rojo';
+        msg="Muestra posible pérdida de líquido amniótico";estado='rojo';
     }
 
     let obj={
@@ -138,9 +138,9 @@ let precionArterial  = function (valor,atencion) {
     if(valor<=90 && valor>=80){
         msg="Presión arterial estable.";estado='verde';
     }else if(valor>90){
-        msg="Alto riesgo de hipertension crónica y falta de oxigeno para el bebe.";estado='rojo';
+        msg="Riesgo de hipertension crónica y falta de oxigeno.";estado='rojo';
     }else if(valor<80){
-        msg="Riesgo a la madre gestante este con la  presion baja afectando al bebe.";estado='rojo';
+        msg="Gestante con la  presion baja afectando al bebe.";estado='rojo';
     }
 
     let obj={
@@ -159,9 +159,9 @@ let pulsoMaterno  = function (valor,atencion) {
     if(valor<=80  && valor>=60 ){
         msg="Ritmo cardiaco estable..";estado='verde';
     }else if(valor>80){
-        msg="Alto riesgo de provocar la muerte al bebe y a la madre.";estado='rojo';
+        msg="Estado que podria provocar la muerte del bebe y a la madre.";estado='rojo';
     }else if(valor<60){
-        msg="Riesgo de provocar la muerte al bebe.";estado='rojo';
+        msg="Le causa daño al bebe por tener la precion baja.";estado='rojo';
     }
 
 
@@ -182,8 +182,8 @@ let pulsoMaterno  = function (valor,atencion) {
 let alturaUterina  = function (valor,atencion) {
 
 
-    let mensaje_min="posible señal de futura sesaria.";
-    let mensaje_max="posible aumento de peso por parte de la madre.";
+    let mensaje_min="Estado que podria llevar a una posible sesaria.";
+    let mensaje_max="Motivo de aumento de peso por parte de la madre.";
     
      let estado='rojo';
     if(1==atencion){
@@ -255,7 +255,7 @@ let alturaUterina  = function (valor,atencion) {
 let situacion  = function (valor,atencion) {
 
     estado='rojo'
-    msg="Tomar medidas preventivas para el parto";
+    msg="Tomar medidas preventivas antes del parto";
 
     if(atencion==1 || atencion==2){
         if(valor=='no aplica'){
@@ -321,7 +321,7 @@ let posicion  = function (valor,atencion) {
 
 
 
-    msg=`la posicion del bebe es del lado ${valor}`
+    msg=`la posición del bebe es del lado ${valor}`
     estado='verde';
 
     let obj={
@@ -398,16 +398,16 @@ let proteinuriaCualitativa  = function (valor,atencion) {
 
 
     if('nsh'==valor){
-        msg="No presenta precion arterial alta.";estado='verde';
+        msg="No presenta presión arterial alta.";estado='verde';
     }else{
-        msg="Alto riesgo de precion arterial inestable.";estado='rojo';
+        msg="Alto riesgo de presión arterial inestable.";estado='rojo';
     }
 
 
 
     let obj={
         "indicador":"proteinuriaCualitativa", 
-        "label":"Proteinuria cualitativa",
+        "label":"Proteina cualitativa",
         "valor":valor,
         "msg":msg,
         "estado":estado
@@ -426,10 +426,10 @@ let proteinuriaCualitativa  = function (valor,atencion) {
 let edema  = function (valor,atencion) {
 
     if(valor=='+'||valor=='++'||valor=='+++'){
-        msg="Presenta hinchazón normal de la etapa del embarazo.";estado='verde';
+        msg="La hinchazón es un Estado normal en la etapa del embarazo.";estado='verde';
 
     }else if(valor=='se'){
-        msg="Alto riesgo por dolor a la boca del estomago.";estado='rojo';
+        msg="Se puede presentar riesgo por dolor a la boca del estomago.";estado='rojo';
 
     }
 
@@ -610,9 +610,13 @@ let ECOControl  = function (valor,atencion) {
         msg='No se puede verificar el estado de salud del bebé';
         estado="rojo"
     }
+    if(valor=='na'){
+        msg='No es de urgencia en gestantes primerizas.';
+        estado="naranja"
+    }
     let obj={
         "indicador":"ECOControl", 
-        "label":"Ecografia de Control",
+        "label":"Edad Gestacional De Ecografía Control",
         "valor":valor,
         "msg":msg,
         "estado":estado
@@ -629,14 +633,23 @@ let ECOControl  = function (valor,atencion) {
 // }
 let perfilBiofisico  = function (valor,atencion) {
 
-    if(valor=='na'){
-        msg='Se realiza cuando la gestante esta hospitalizada, y se va a realizar su cesárea.';
-        estado="verde"
+
+    if(atencion==9){
+        if(valor=='na'){
+            msg='No es necesario. Este perfil es de nivel hospitalario.';
+            estado="verde"
+        }else if(valor=='no se hizo'){
+            msg='Se realiza cuando la gestante está hospitalizada, y se va a realizar su cesárea';
+            estado="verde"
+        }
+        else if(valor=='se hizo'){
+            msg='La gestante presenta complicaciones graves en el parto.';
+            estado="rojo"
+        } 
     }else{
-        msg='...';
-        estado="rojo"
+        msg='Este es un indicador se aplica en la atención 9';
+        estado="naranja"
     }
- 
 
     let obj={
         "indicador":"perfilBiofisico", 
@@ -666,6 +679,7 @@ let cita  = function (valor,atencion) {
     } 
     return obj;
 }
+
 let visitaDomicilia  = function (valor,atencion) {
 
 
@@ -678,7 +692,7 @@ let visitaDomicilia  = function (valor,atencion) {
         msg='La visita domicilia se debió realizar al día siguiente de no haber acudido la gestante a su control mensual.';
         estado="naranja"
     }
-
+     
 
     let obj={
         "indicador":"visitaDomicilia", 
@@ -726,7 +740,7 @@ let establecimientoDeLaAtencion  = function (valor,atencion) {
 }
 let numeroFormatoSis  = function (valor,atencion) {
 
-    msg=`Nro del Seguro de SIS: ${valor}`;
+    msg=`Nro del Seguro de SIS : ${valor}`;
 
     let obj={
         "indicador":"numeroFormatoSis", 
