@@ -3,7 +3,7 @@ let msg=null;
 let estado="verde";
  
 let numeroAtencion  = function (valor,atencion) {
-    
+    estado="verde"
     let obj={
         "indicador":"numeroAtencion", 
         "label":"Numero atención",
@@ -157,7 +157,7 @@ let precionArterial  = function (valor,atencion) {
 let pulsoMaterno  = function (valor,atencion) {
 
     if(valor<=80  && valor>=60 ){
-        msg="Ritmo cardiaco estable..";estado='verde';
+        msg="Ritmo cardiaco estable.";estado='verde';
     }else if(valor>80){
         msg="Estado que podria provocar la muerte del bebe y a la madre.";estado='rojo';
     }else if(valor<60){
@@ -736,6 +736,7 @@ let planParto  = function (valor,atencion) {
 }
 let establecimientoDeLaAtencion  = function (valor,atencion) {
     msg=`Establecimiento de atención o puesto de salud: ${valor}`;
+    estado='verde';
     let obj={
         "indicador":"establecimientoDeLaAtencion", 
         "label":"Establecimiento de la atención",
